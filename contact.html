@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Works Web</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/flipclock.css" />
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <link href='//api.tiles.mapbox.com/mapbox.js/v1.5.1/mapbox.css' rel='stylesheet' />
+    <script src="js/modernizr.custom.js"></script>
+    <style>
+    body { margin:0; }
+    #map-canvas { height: 500px; }
+    hr{ margin: 30px 0 50px 0;}
+  </style>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+    <!--[if lte IE 8]>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.0/mapbox.ie.css' rel='stylesheet' />
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="center" class="col-lg-12 header">
+          <img src="img/logosmall.png" alt="" class="img-responsive">
+        </div>
+      </div>
+      <nav class="navbar navbar-default" role="navigation">
+        <ul class="nav navbar-nav cl-effect-15">
+          <li><a data-hover="Acceuil" href="./index.html">Acceuil</a></li>
+          <li><a data-hover="Produit" href="./produit.html">Produit</a></li>
+          <li><a data-hover="Marque" href="./marque.html">Marque</a></li>
+          <li><a data-hover="Boutique" href="./boutique02.html">Boutique</a></li>
+          <li><a data-hover="Contact" href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>   
+  
+      
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 frame"><div id="map-canvas"></div></div>
+      </div>
+    </div>  
+      
+    <div class="container">
+      <div class="row padding">
+        <div class="col-xs-12 col-sm-6 col-lg-6">
+        <div class="col-md-12"><h2>Horaire</h2></div>
+          <div class="row">
+            <div class="col-md-6">
+              <img src="img/09.png" class="img-responsive" alt="">
+            </div>
+            <div class="col-md-6">
+              <img src="img/19.png" class="img-responsive" alt="">
+            </div>
+          </div>
+          
+          <div class="col-md-12"><h3>du Lundi au Samedi</h3></div>
+          <div class="col-sm-12"><hr></div>
+          <div class="clearfix"></div>
+          <div class="row">
+            <div class="col-md-12">
+              <img src="img/contact.png" alt="" class="img-responsive">
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-5 col-lg-offset-1  ">
+          <form class="form" role="form">
+            <div class="form-group">
+              <input type="text" class="form-control text pr" placeholder="Nom">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control text pr" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control text pr" rows="5" placeholder="Message..."></textarea>
+            </div>
+            <div class="form-group text-right">
+              <button type="button" class="btn btn-pr rouge text">Suprrimer</button>
+              <button type="button" class="btn btn-pr vert text">Envoyer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-lg-6">
+            <p class="text-left text">© 2014 Le PoivronRouge - All Rights Reserved</p>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-lg-6">
+            <p class="text-right text">Designed by <a href="http://worksweb.fr" target="_blank">WorksWeb</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2w4OPq9ob8cD0w1-RcETZJ5LncA4H4_g&sensor=true"></script>
+    <script type="text/javascript" src="js/retina-1.1.0.min.js"></script>
+    <script type="text/javascript">
+      function initialize() {
+        var myLatlng = new google.maps.LatLng(43.7071005,7.3305542);
+        var mapOptions = {
+          center: myLatlng,
+          zoom: 14,
+          mapTypeControlOptions: {
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+          }
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        var image = 'img/ping.png';
+        
+        var beachMarker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            icon: image
+        });
+        var styles = [{"featureType":"water","stylers":[{"color":"#46bcec"},{"visibility":"on"}]},{"featureType":"landscape","stylers":[{"color":"#f2f2f2"}]},{"featureType":"road","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","stylers":[{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"transit","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]}];
+
+        var styledMap = new google.maps.StyledMapType(styles,
+          {name: "Styled Map"});
+
+        map.mapTypes.set('map_style', styledMap);
+        map.setMapTypeId('map_style');
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+    </script>
+  </body>
+</html>
